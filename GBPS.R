@@ -189,8 +189,12 @@ plot.PCGA(PCGA_int_rw, col.vec = col_int_rw)
 par(mfrow = c(1, 1))
 
 ### Climate -----------------------------------------------------------------------------------------------------------
-gb_climate <- read.table("workshop/climate/GBPS_climate.txt")
-head(climate)
+# gb_climate <- read.table("workshop/climate/GBPS_climate.txt")
+gb_climate <- read.csv("IMGW/GBPS_climate.csv", sep = ",")
+head(gb_climate)
+# for consistency
+rownames(gb_climate) <- gb_climate[, 1]
+gb_climate <- gb_climate[, 2:25]
 
 t_mat <- gb_climate[, 1:12]
 p_mat <- gb_climate[, 13:24]

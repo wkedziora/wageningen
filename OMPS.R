@@ -186,8 +186,12 @@ par(mfrow = c(1, 1))
 
 ### Climate -----------------------------------------------------------------------------------------------------------
 om_climate <- read.table("workshop/climate/OMPS_climate.txt")
-head(om_climate)
-# 
+# om_climate <- read.csv("IMGW/OMPS_climate.csv", sep = ",")
+# head(om_climate)
+# # for consistency
+# rownames(om_climate) <- om_climate[, 1]
+# om_climate <- om_climate[, 2:25]
+ 
 # gb_climate %>%
 #   select(T.1:T.12) %>%
 #   mutate(year = rownames(.)) %>%
@@ -205,7 +209,7 @@ head(om_climate)
 t_mat <- om_climate[, 1:12]
 p_mat <- om_climate[, 13:24]
 
-PET <- thornthwaite(as.numeric(t(t_mat)), 53.958694)
+PET <- thornthwaite(as.numeric(t(t_mat)), 52.669183)
 
 spei3 <- spei(as.numeric(t(p_mat)) - PET, scale = 3)
 
